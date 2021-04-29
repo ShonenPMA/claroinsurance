@@ -1,7 +1,7 @@
 <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
     <div class="w-1/3">
         <h1 class="text-xl text-center uppercase">
-            <a href="">{{ config('app.name') }}</a>
+            <a href="{{ route('welcome') }}">{{ config('app.name') }}</a>
         </h1>
     </div>
     <div class="w-2/3 flex justify-end">
