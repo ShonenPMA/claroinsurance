@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\IndexController;
+use App\Http\Controllers\Web\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [IndexController::class, 'view'])->name('welcome');
+Route::get('/registro', [RegisterController::class, 'view'])->name('register');
