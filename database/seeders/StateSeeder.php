@@ -17,14 +17,13 @@ class StateSeeder extends Seeder
     {
         $json = File::get('database/json/states.json');
         $json = json_decode($json);
-        $states = $json->states;
 
-        foreach ($states as $state) {
-            State::insert([
-                'id' => $state->id,
-                'name' => $state->name,
-                'id_country' => $state->id_country
-            ]);
+        $states =json_decode(json_encode($json->states), true);
+
+        $chunks = array_chunk($states, 5000);
+
+        foreach ($chunks as $state) {
+            State::insert($state);
         }
     }
 }
