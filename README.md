@@ -97,4 +97,9 @@ Comandos opcionales y se deberan ejecutar cuando:
 
 ### Test 
  * Crear archivo /database/test.sqlite
- * Ejecutar el comando `php artisan test`
+ * Ejecutar el comando `php artisan test --parallel`
+ * Para ver cada test en especifico `php artisan test --filter nombreDeLaClase`
+ * Para ver una clase repetida con diferente folder padre por ejemplo EmailControllerTest está en Api como en Web
+   * `php artisan test --filter 'Api\\EmailControllerTest'` => para api
+   * `php artisan test --filter 'Web\\EmailControllerTest'` => para web
+ * Para ver cada test a detalle ejecutar `php artisan test`
