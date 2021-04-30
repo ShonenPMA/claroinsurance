@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'id_city'
     ];
 
     /**
@@ -46,5 +47,11 @@ class User extends Authenticatable
     public function getAgeAttribute()
     {
         return Carbon::parse($this->birth_date)->age;
+    }
+
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'id_city');
     }
 }
