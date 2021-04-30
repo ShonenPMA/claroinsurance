@@ -12,8 +12,8 @@
                     <th>Cédula</th>
                     <th>Correo</th>
                     <th>Celular</th>
+                    <th>Cumpleaños</th>
                     <th>Edad</th>
-                    <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
@@ -24,9 +24,9 @@
                     <td>{{ $user->card }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
+                    <td>{{ $user->birth_date }}</td>
                     <td>{{ $user->age }}</td>
-                    <td>Editar</td>
-                    <td>Eliminar</td>
+                    <td><a class="delete p-2 bg-red-600 text-white" href="{{route('users.destroy', $user)}}">ELIMINAR</a></td>
                 </tr>
                 @endforeach
             </tbody>
@@ -35,9 +35,11 @@
         @else
             No hay usuarios registrados
         @endif
+
     </div>
 @endsection
 
 @push('scripts')
+    <script src="{{ mix('js/httpWeb.js') }}"></script>
     <script src="{{ mix('js/users.js') }}"></script>
 @endpush

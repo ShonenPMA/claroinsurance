@@ -3,12 +3,13 @@ import 'tabulator-tables/dist/css/semantic-ui/tabulator_semantic-ui.min.css'
 
 const myTabulators = document.querySelectorAll('#users');
 const myTables = [];
+
 Array.prototype.forEach.call(myTabulators,function(myTabulator,index){
     const id = myTabulator.getAttribute('id');
     myTables[index] = new Tabulator('#'+id,{
         locale:true,
         langs: {
-            'es':{
+            'es-es':{
                 "pagination":{
                     "page_size":"Cantidad a mostrar", //label for the page size select element
                     "page_title":"Ver Página",//tooltip text for the numeric page button, appears in front of the page number (eg. "Show Page" will result in a tool tip of "Show Page 1" on the page 1 button)
@@ -37,14 +38,16 @@ Array.prototype.forEach.call(myTabulators,function(myTabulator,index){
         paginationSize:5,
         paginationSizeSelector:[2,5, 10, 50, 100],
         columns: [
-            {title:"Nombre", field:"name", headerFilter: true},
+            {title:"Nombre", field:"name", editor:"input", headerFilter: true},
             {title:"Cédula", field:"card", headerFilter: true},
             {title:"Correo", field:"email", headerFilter: true},
-            {title:"Celular", field:"phone", headerFilter: true},
+            {title:"Celular", field:"phone", editor:"input", headerFilter: true},
+            {title:"Cumpleaños", field:"birth_date", headerFilter: true},
             {title:"Edad", field:"age", headerFilter: true},
-            {title:"Editar", field:"edit", headerFilter: false},
-            {title:"Eliminar", field:"delete", headerFilter: false},
+            {title:"Eliminar", field:"delete", formatter:"html", headerFilter: false},
         ],
 
     })
 })
+
+

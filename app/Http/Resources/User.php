@@ -20,8 +20,7 @@ class User extends JsonResource
             'email' => $this->email,
             'phone' => $this->phone,
             'age' => $this->age,
-            'edit' => 'EDITAR',
-            'delete' => 'ELIMINAR'
+            'delete' => '<a class="delete p-2 bg-red-600 text-white" href="'.route('users.destroy', $this).'">ELIMINAR</a>'
         ];
     }
 }
