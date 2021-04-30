@@ -85,3 +85,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ mix('js/register.js') }}"></script>
+@endpush
