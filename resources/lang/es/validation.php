@@ -151,10 +151,9 @@ return [
         'email' => 'correo',
         'username' => 'usuario',
         'password' => 'contraseña',
-
-        'id_app' => 'subdominio de colegio',
-        'business_name' => 'razón social',
-        'tradename' => 'nombre comercial',
+        'receiver' => 'destinatario',
+        'subject' => 'asunto',
+        'content' => 'mensaje',
     ],
 
 ];

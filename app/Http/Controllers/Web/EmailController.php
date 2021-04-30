@@ -3,9 +3,13 @@
 declare(strict_types=1);
 namespace App\Http\Controllers\Web;
 
+use App\Dtos\Email\RegisterDto;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Email\EmailRegisterRequest;
 use App\Http\Resources\EmailCollection;
 use App\Models\Email;
+use App\UseCases\Email\RegisterUseCase;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\View\View;
@@ -43,9 +47,12 @@ class EmailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmailRegisterRequest $request) : JsonResponse
     {
-        //
+        $dto = RegisterDto::fromRequest($request);
+        $useCase = new RegisterUseCase(auth()->user());
+
+        return $useCase->execute($dto);
     }
 
     /**
