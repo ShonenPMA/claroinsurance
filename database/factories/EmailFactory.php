@@ -28,7 +28,8 @@ class EmailFactory extends Factory
             'subject' => 'Asunto',
             'receiver' => $this->faker->safeEmail,
             'message' => 'Hola Mundo',
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'state' => 'PENDIENTE'
         ];
     }
 
