@@ -21,6 +21,10 @@ Route::get('/registro', [RegisterController::class, 'view'])->name('register');
 Route::post('/registro', [RegisterController::class, 'loadData'])->name('loadData');
 Route::post('/registro/save', [RegisterController::class, 'register'])->name('save');
 
+Route::get('home', function(){
+    return 'home';
+})->name('home');
+
 Auth::routes([
     'login' => true,
     'register' => false,

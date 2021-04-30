@@ -5,7 +5,7 @@
         <div>
             <h1 class="text-4xl text-center">Formulario de Acceso</h1>
 
-            <form action="{{ route('save') }}" class="my-16 block max-w-md mx-auto" method="POST">
+            <form class="my-16 block max-w-md mx-auto" method="POST">
                 <x-web.form.input
                     placeholder="Correo"
                     name="email"

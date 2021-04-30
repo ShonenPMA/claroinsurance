@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Dtos\User\LoginDto;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserLoginRequest;
 use App\Providers\RouteServiceProvider;
+use App\UseCases\User\LoginUseCase;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,5 +52,13 @@ class LoginController extends Controller
         Auth::logout();
 
         return redirect()->route('login');
+    }
+
+
+    public function login(UserLoginRequest $request)
+    {
+        $useCase = new LoginUseCase();
+
+        return $useCase->execute(LoginDto::fromRequest($request));
     }
 }
