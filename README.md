@@ -1,62 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Prueba Claro Insurance
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Prueba Técnica
 
-## About Laravel
+## Resumen
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+  * [Instalación](#instalacion)
+  * [Optimizando el proyecto en producción](#optimizando-el-proyecto-en-produccion)
+  * [API](#api)
+  * [Test](#test)
+### Instalación
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Clonar el repositorio en una carpeta(claroinsurance):
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> git clone https://github.com/ShonenPMA/claroinsurance.git  claroinsurance
 
-## Learning Laravel
+2. Ir a la carpeta y ejecutar el comando:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> composer install --optimize-autoloader --no-dev
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. Copiar el .env.example para generar tus variables de entorno:
 
-## Laravel Sponsors
+> cp .env.example .env
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+4. Editar tu archivo .env:
 
-### Premium Partners
+> nano .env
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+5. Generar la llave de la aplicación:
 
-## Contributing
+> php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. Ejecutar migraciones
 
-## Code of Conduct
+> php artisan migrate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. Asignar permisos a las carpetas bootstrap/cache y storage
 
-## Security Vulnerabilities
+> chmod -R 775 boostrap/cache
+>
+> chmod -R 775 storage
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+8. Generar los assets
 
-## License
+> npm install && npm run production
+> sudo cp -r node_modules/tinymce/skins public/js/skins/
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+9. Configurar en public_html el acceso a tu app (Opcional según donde se haga el deploy)
+
+    9.1. Si se usara el proyecto como principal
+    > ln -s /home/user/claroinsurance/public public_html 
+
+    9.2 Si se usara el proyecto como secundario
+
+    > ln -s /home/user/claroinsurance/public claroinsurance 
+
+10. Una vez creado nuestro hipervinculo en el paso 9 crearemos el hipervinculo para la carpeta storage
+
+>php artisan storage:link (en el path de tu aplicacion)
+### Optimizando el proyecto en producción
+
+Cada vez que se actualice el repositorio y para obtener un mejor rendimiento del aplicativo se deberán ejecutar los siguientes comandos:
+
+> php artisan config:cache
+>
+> php artisan route:cache
+>
+> php artisan view:cache
+
+
+Comandos opcionales y se deberan ejecutar cuando:
+1. Si se han añadido nuevos paquetes o modificado el archivo composer.sjon
+
+> composer install --optimize-autoloader --no-dev
+
+2. Se actualizaron los assets o cambió el archivo webpack.mix.js
+
+> npm run production
+
+3. Se crearon nuevas migraciones
+
+> php artisan migrate
+
+
+### API
+
+
+#### Email
+
+  * **GET**: `api/emails`
+    * Parámetros adicionales:
+        * size : cantidad de correos a obtener por página
+        * receiver : correo del destinatario
+        * sender: correo del remitente
+        * subject: asunto del correo
+    
+
+### Test 
+ * Crear archivo /database/test.sqlite
+ * Ejecutar el comando `php artisan test`
