@@ -44,7 +44,7 @@
                 />
 
                 <x-web.form.input
-                    placeholder="Fecha de nacimiento (dd/mm/yyyy)"
+                    placeholder="Fecha de nacimiento"
                     name="birth_date"
                     type="date"
                     :required="true"
