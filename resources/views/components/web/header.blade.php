@@ -11,6 +11,14 @@
         @endguest
 
         @auth
+            @can('list-users')
+            <a  
+                class="mr-2 border-white border-2 rounded-md p-2" 
+                href="{{ route('users.index') }}">
+                Usuarios
+            </a>
+            @endcan
+
             <a 
                 class="mr-2 border-white border-2 rounded-md p-2" 
                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"

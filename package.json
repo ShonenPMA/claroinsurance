@@ -18,6 +18,7 @@
         "tailwindcss": "^2.1.2"
     },
     "dependencies": {
-        "sweetalert2": "^10.16.6"
+        "sweetalert2": "^10.16.6",
+        "tabulator-tables": "^4.9.3"
     }
 }
