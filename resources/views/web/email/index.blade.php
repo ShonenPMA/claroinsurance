@@ -40,5 +40,4 @@
 
 @push('scripts')
     <script src="{{ mix('js/httpWeb.js') }}"></script>
-    <script src="{{ mix('js/emails.js') }}"></script>
 @endpush

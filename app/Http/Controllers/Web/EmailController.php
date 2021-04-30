@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmailCollection;
 use App\Models\Email;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\View\View;
 
 class EmailController extends Controller
 {
@@ -14,13 +17,13 @@ class EmailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() : View|ResourceCollection
     {
         if(request()->wantsJson()){
             $size = request()->get('size') ?? '2';
             return new EmailCollection(Email::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate($size));
         }
-        return view('web.user.email')
+        return view('web.email.index')
         ->with('emails', Email::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get());
     }
 
@@ -29,9 +32,9 @@ class EmailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() : View
     {
-        //
+        return view('web.email.create');
     }
 
     /**
