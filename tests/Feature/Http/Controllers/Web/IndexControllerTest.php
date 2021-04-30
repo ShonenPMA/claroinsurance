@@ -13,7 +13,7 @@ class IndexControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_display_message_in_welcome_view()
+    public function test_muestra_mensaje_de_bienvenida()
     {
         $this->get('/')
         ->assertSee('Bienvenido(a)')

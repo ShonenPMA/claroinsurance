@@ -24,10 +24,10 @@ class UserController extends Controller
     {
         if(request()->wantsJson()){
             $size = request()->get('size') ?? '2';
-            return new UserCollection(User::orderBy('name', 'ASC')->paginate($size));
+            return new UserCollection(User::where('id','<>', auth()->user()->id)->orderBy('name', 'ASC')->paginate($size));
         }
         return view('web.user.index')
-        ->with('users', User::orderBy('name', 'ASC')->get());
+        ->with('users', User::where('id','<>', auth()->user()->id)->orderBy('name', 'ASC')->get());
     }
 
     /**

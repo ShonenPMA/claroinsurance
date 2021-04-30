@@ -14,7 +14,7 @@ class RegisterControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_display_inputs_in_register_view()
+    public function test_muestra_inputs_en_la_vista()
     {
         $this->get('/registro')
         ->assertSee('Correo')
@@ -31,7 +31,7 @@ class RegisterControllerTest extends TestCase
         ->assertStatus(200);
     }
 
-    public function test_can_register_user()
+    public function test_puede_registrar_usuarios()
     {
         $data = [
             'name' => $this->faker->name,
