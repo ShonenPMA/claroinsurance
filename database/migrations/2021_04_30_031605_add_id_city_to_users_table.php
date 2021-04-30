@@ -1,12 +1,11 @@
 <?php
 
-use Database\Seeders\CitySeeder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCitiesTable extends Migration
+class AddIdCityToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,23 +14,17 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
-            $table->id();
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_city')->default(414692);
 
-            $table->string('name');
-
-            $table->unsignedBigInteger('id_state');
-
-            $table->foreign('id_state')
+            $table->foreign('id_city')
             ->references('id')
-            ->on('states');
-            $table->timestamps();
+            ->on('cities');
         });
 
         Artisan::call('db:seed', [
-            '--class' => CitySeeder::class,
+            '--class' => UserSeeder::class,
         ]);
-
     }
 
     /**
@@ -41,6 +34,9 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('id_city');
+            $table->dropColumn('id_city');
+        });
     }
 }
