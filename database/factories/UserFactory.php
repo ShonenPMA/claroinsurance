@@ -26,8 +26,11 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => bcrypt('passworD*123'),
             'remember_token' => Str::random(10),
+            'card' => $this->faker->lexify(str_repeat('?',11)),
+            'birth_date' => '05-02-2000 01:00:00',
+            'id_city' => 414692
         ];
     }
 

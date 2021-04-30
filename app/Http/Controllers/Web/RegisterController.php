@@ -5,14 +5,12 @@ namespace App\Http\Controllers\Web;
 
 use App\Dtos\User\RegisterDto;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\User\UserRegisterRequest;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\State;
 use App\UseCases\User\RegisterUseCase;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
 class RegisterController extends Controller

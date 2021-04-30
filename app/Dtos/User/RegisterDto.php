@@ -3,7 +3,7 @@
 namespace App\Dtos\User;
 
 use App\Abstracts\DataTransferObject;
-use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\User\UserRegisterRequest;
 
 class RegisterDto extends DataTransferObject
 {

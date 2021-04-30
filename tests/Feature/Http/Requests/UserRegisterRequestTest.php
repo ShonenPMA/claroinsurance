@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Requests;
 
-use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\User\UserRegisterRequest;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
