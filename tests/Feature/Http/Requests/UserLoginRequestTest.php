@@ -11,6 +11,7 @@ use Tests\TestCase;
 
 class UserLoginRequestTest extends TestCase
 {
+    use RefreshDatabase;
     private $validator;
     private $rules;
 
