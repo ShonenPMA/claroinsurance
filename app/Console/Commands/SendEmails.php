@@ -52,6 +52,7 @@ class SendEmails extends Command
                 $this->info("Enviado exitosamente");
             }catch(\Exception $e){
                 $email->state = "FALLO";
+                $email->save();
                 $this->error("Falló");
             }
 
