@@ -15,7 +15,7 @@ class HomeControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_display_welcome_user_register()
+    public function test_muestra_mensaje_de_bienvenida_con_nombre_del_usuario_autenticado()
     {
         $user = User::factory()->create();
         $this->actingAs($user)
@@ -24,7 +24,7 @@ class HomeControllerTest extends TestCase
         ->assertSee("Bienvenido(a) {$user->name}");
     }
 
-    public function test_redirect_unauthenticated()
+    public function test_redirije_al_login_a_visitantes()
     {
         $this->get('/home')
         ->assertRedirect('login');

@@ -17,7 +17,7 @@ class LoginControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_display_inputs_in_login_view()
+    public function test_muestra_los_inputs_en_la_vista()
     {
         $this->get('/login')
         ->assertSee('Correo')
@@ -25,7 +25,7 @@ class LoginControllerTest extends TestCase
         ->assertStatus(200);
     }
 
-    public function test_can_login_user()
+    public function test_puede_iniciar_sesion()
     {
         $user = User::factory()->create();
         $data = [
