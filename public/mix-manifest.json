@@ -3,5 +3,6 @@
     "/js/swal.js": "/js/swal.js",
     "/js/httpWeb.js": "/js/httpWeb.js",
     "/js/register.js": "/js/register.js",
+    "/js/users.js": "/js/users.js",
     "/css/app.css": "/css/app.css"
 }

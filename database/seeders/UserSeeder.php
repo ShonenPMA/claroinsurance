@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@claroinsurance.com',
             'card' => '12345678901',
             'birth_date' => '01/01/1990',
-            'password' => bcrypt('admin')
+            'password' => bcrypt('Admin*123')
         ]);
     }
 }

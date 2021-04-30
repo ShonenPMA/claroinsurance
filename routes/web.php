@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\IndexController;
 use App\Http\Controllers\Web\RegisterController;
+use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,12 @@ Route::post('/registro/save', [RegisterController::class, 'register'])->name('sa
 
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [HomeController::class, 'view'])->name('home');
+
+    Route::get('users', [UserController::class , 'index'])->name('users.index');
+    Route::put('users', [UserController::class , 'update'])->name('users.update');
+    Route::get('users/{user}', [UserController::class , 'destroy'])->name('users.destroy');
 });
+
 
 Auth::routes([
     'login' => true,
