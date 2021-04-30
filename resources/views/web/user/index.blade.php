@@ -12,7 +12,6 @@
                     <th>Cédula</th>
                     <th>Correo</th>
                     <th>Celular</th>
-                    <th>Cumpleaños</th>
                     <th>Edad</th>
                     <th>Eliminar</th>
                 </tr>
@@ -24,7 +23,6 @@
                     <td>{{ $user->card }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
-                    <td>{{ $user->birth_date }}</td>
                     <td>{{ $user->age }}</td>
                     <td><a class="delete p-2 bg-red-600 text-white" href="{{route('users.destroy', $user)}}">ELIMINAR</a></td>
                 </tr>

@@ -1,6 +1,7 @@
 import Tabulator from 'tabulator-tables'
 import 'tabulator-tables/dist/css/semantic-ui/tabulator_semantic-ui.min.css'
-
+const axios = require('axios');
+const Swal = require('sweetalert2');
 const myTabulators = document.querySelectorAll('#users');
 const myTables = [];
 
@@ -42,10 +43,43 @@ Array.prototype.forEach.call(myTabulators,function(myTabulator,index){
             {title:"Cédula", field:"card", headerFilter: true},
             {title:"Correo", field:"email", headerFilter: true},
             {title:"Celular", field:"phone", editor:"input", headerFilter: true},
-            {title:"Cumpleaños", field:"birth_date", headerFilter: true},
             {title:"Edad", field:"age", headerFilter: true},
             {title:"Eliminar", field:"delete", formatter:"html", headerFilter: false},
         ],
+        cellEdited: function(cell)
+        {
+            const data = cell.getRow().getData();
+            data._method = 'PUT';
+
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            axios.post(
+                window.location.href,
+                data,
+                    {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN' : csrfToken
+                    }
+                })
+                .then(function(response){
+                    const data = response.data || null;
+                    Swal.fire('Proceso Completado',data.message,'success');
+                   
+                }).catch(function (error) {
+                    console.log(error);
+                    let message =  error.response.data.message || error.response.data.statusText || error.response.statusText ||error.response.message
+                    if(error.response.data.errors){
+                        message = error.response.data.errors[Object.keys(error.response.data.errors)[0]][0]
+                    }
+                    let type=error.type || 'error'
+                    Swal.fire({
+                        title: 'Oops...',
+                        html: message,
+                        icon: type
+                    })
+                });
+        }
 
     })
 })
