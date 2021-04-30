@@ -8,7 +8,7 @@
                 class="border-white bg-gray-800 text-white border-2 rounded-md p-2" 
                 href="{{ route('emails.create') }}">Registrar Correo</a>
         </div>
-        @csrf
+
         @if (count($emails) > 0)
         <table id="emails">
             <thead>
@@ -39,5 +39,6 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ mix('js/emails.js') }}"></script>
     <script src="{{ mix('js/httpWeb.js') }}"></script>
 @endpush
