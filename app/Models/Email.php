@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Email extends Model
 {
     use HasFactory, DatesTranslator;
+
+    protected $fillable = ['receiver','subject','message','user_id'];
 }
