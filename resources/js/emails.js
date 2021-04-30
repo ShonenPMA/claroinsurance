@@ -42,7 +42,6 @@ Array.prototype.forEach.call(myTabulators,function(myTabulator,index){
             {title:"Destinatario", field:"receiver", headerFilter: true},
             {title:"Fecha de creación", field:"created_at", headerFilter: true},
             {title:"Estado", field:"state", headerFilter: true},
-            {title:"Eliminar", field:"delete", formatter:"html", headerFilter: false},
         ],
         cellEdited: function(cell)
         {

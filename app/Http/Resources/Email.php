@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Email extends JsonResource
@@ -14,11 +15,11 @@ class Email extends JsonResource
      */
     public function toArray($request)
     {
+        Carbon::setLocale('es');
         return [
             'receiver' => $this->receiver,
-            'created_at' => $this->created_at,
-            'state' => $this->state,
-            'delete' => '<a class="delete p-2 bg-red-600 text-white" href="'.route('emails.destroy', $this).'">ELIMINAR</a>'
+            'created_at' =>Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('j F Y H:i'),
+            'state' => $this->state
         ];
     }
 }

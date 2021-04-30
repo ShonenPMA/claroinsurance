@@ -16,7 +16,6 @@
                     <th >Destinatario</th>
                     <th>Fecha de creación</th>
                     <th>Estado</th>
-                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +24,6 @@
                     <td>{{ $email->receiver }}</td>
                     <td>{{ $email->created_at }}</td>
                     <td>{{ $email->state }}</td>
-                    <td><a class="delete p-2 bg-red-600 text-white" href="{{route('emails.destroy', $email)}}">ELIMINAR</a></td>
                 </tr>
                 @endforeach
             </tbody>

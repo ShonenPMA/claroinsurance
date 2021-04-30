@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('emails', [EmailController::class , 'index'])->name('emails.index');
     Route::get('emails/create', [EmailController::class , 'create'])->name('emails.create');
     Route::post('emails/create', [EmailController::class , 'store'])->name('emails.store');
-    Route::get('emails/{email}', [EmailController::class , 'detroy'])->name('emails.destroy');
+
     
 });
 
