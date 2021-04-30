@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class UserRegisterRequestTest extends TestCase
 {
+    use RefreshDatabase;
     private $validator;
     private $rules;
 

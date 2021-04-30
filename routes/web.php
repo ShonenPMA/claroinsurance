@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\IndexController;
 use App\Http\Controllers\Web\RegisterController;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +22,10 @@ Route::get('/registro', [RegisterController::class, 'view'])->name('register');
 Route::post('/registro', [RegisterController::class, 'loadData'])->name('loadData');
 Route::post('/registro/save', [RegisterController::class, 'register'])->name('save');
 
-Route::get('home', function(){
-    return 'home';
-})->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', [HomeController::class, 'view'])->name('home');
+});
 
 Auth::routes([
     'login' => true,
