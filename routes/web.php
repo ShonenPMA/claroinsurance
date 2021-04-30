@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\EmailController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\IndexController;
 use App\Http\Controllers\Web\RegisterController;
@@ -32,6 +33,10 @@ Route::middleware(['auth'])->group(function () {
         Route::put('users', [UserController::class , 'update'])->name('users.update');
         Route::get('users/{user}', [UserController::class , 'destroy'])->name('users.destroy');
     });
+
+
+    Route::get('emails', [EmailController::class , 'index'])->name('emails.index');
+    Route::get('emails/create', [EmailController::class , 'create'])->name('emails.create');
     
 });
 
