@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\IndexController;
 use App\Http\Controllers\Web\RegisterController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,10 @@ Route::get('/registro', [RegisterController::class, 'view'])->name('register');
 Route::post('/registro', [RegisterController::class, 'loadData'])->name('loadData');
 Route::post('/registro/save', [RegisterController::class, 'register'])->name('save');
 
-Route::get('login', function(){
-    return 'Login';
-})->name('login');
+Auth::routes([
+    'login' => true,
+    'register' => false,
+    'reset' =>false,
+    'verifiy' => false,
+    'confirm' => false
+    ]);
