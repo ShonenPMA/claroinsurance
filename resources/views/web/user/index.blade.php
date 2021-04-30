@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="w-full container bg-gray-100 mx-auto mt-8 py-8">
-        <h1 class="text-4xl text-center mb-8">Listado de usuarios (a) {{ auth()->user()->name }}</h1>
-        @csrf
+        <h1 class="text-4xl text-center mb-8">Listado de usuarios</h1>
+
         @if (count($users) > 0)
         <table id="users">
             <thead>

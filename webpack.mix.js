@@ -16,6 +16,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/httpWeb', 'public/js')
     .js('resources/js/register', 'public/js')
     .js('resources/js/users', 'public/js')
+    .js('resources/js/emails', 'public/js')
+    .js('resources/js/tinyMCE', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
     ]);

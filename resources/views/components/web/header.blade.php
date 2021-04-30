@@ -11,6 +11,11 @@
         @endguest
 
         @auth
+
+            <a 
+            class="mr-2 border-white border-2 rounded-md p-2" 
+            
+            href="{{ route('emails.index') }}">Correos</a>
             @can('list-users')
             <a  
                 class="mr-2 border-white border-2 rounded-md p-2" 
