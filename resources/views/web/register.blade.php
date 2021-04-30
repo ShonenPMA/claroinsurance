@@ -5,7 +5,7 @@
         <div>
             <h1 class="text-4xl text-center">Formulario de Registro</h1>
 
-            <form class="my-16 block max-w-md mx-auto" method="POST">
+            <form action="{{ route('save') }}" class="my-16 block max-w-md mx-auto" method="POST">
                 <x-web.form.input
                     placeholder="Correo"
                     name="email"
@@ -75,12 +75,10 @@
                     <option value="">Seleccionar ciudad</option>
                 </x-web.form.select>
 
+                <button type="submit" class="w-full mt-4 px-1 py-2 border border-gray-400 text-white rounded-md bg-gray-800">
+                Registrarme</button>
+                    
 
-                <x-web.form.input
-                    value="Registrarme"
-                    type="submit"
-                    class="w-full mt-4 px-1 py-2 border border-gray-400 text-white rounded-md bg-gray-800"
-                />
 
             </form>
         </div>
@@ -89,4 +87,5 @@
 
 @push('scripts')
     <script src="{{ mix('js/register.js') }}"></script>
+    <script src="{{ mix('js/httpWeb.js') }}"></script>
 @endpush

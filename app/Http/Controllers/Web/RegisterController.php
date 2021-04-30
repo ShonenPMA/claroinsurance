@@ -3,10 +3,13 @@
 declare(strict_types=1);
 namespace App\Http\Controllers\Web;
 
+use App\Dtos\User\RegisterDto;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRegisterRequest;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\State;
+use App\UseCases\User\RegisterUseCase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -38,5 +41,14 @@ class RegisterController extends Controller
         }
         
         return null;
+    }
+
+    public function register(UserRegisterRequest $request) : JsonResponse
+    {
+        $dto = RegisterDto::fromRequest($request);
+
+        $useCase = new RegisterUseCase();
+
+        return $useCase->execute($dto);
     }
 }

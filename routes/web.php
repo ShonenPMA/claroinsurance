@@ -18,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'view'])->name('welcome');
 Route::get('/registro', [RegisterController::class, 'view'])->name('register');
 Route::post('/registro', [RegisterController::class, 'loadData'])->name('loadData');
+Route::post('/registro/save', [RegisterController::class, 'register'])->name('save');
+
+Route::get('login', function(){
+    return 'Login';
+})->name('login');
