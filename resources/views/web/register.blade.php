@@ -54,6 +54,9 @@
                     id="country"
                 >
                     <option value="">Seleccionar país</option>
+                    @foreach ($countrys as $country)
+                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                    @endforeach
                 </x-web.form.select>
 
                 <x-web.form.select
